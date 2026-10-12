@@ -6,7 +6,12 @@ test.beforeEach(async ({page}) => {
 
 test.describe('form layouts page', ()=> {
 
-    test.beforeEach(async ({page})=>{
+    test.describe.configure({retries:3});
+
+    test.beforeEach(async ({page}, testInfo)=>{
+        if(testInfo.retry){
+            //clear test data here 
+        }
 await page.getByText('Forms').click();
 await page.getByText('Form Layouts').click();
     });
